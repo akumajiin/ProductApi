@@ -36,7 +36,8 @@ namespace ProductApi.Controllers
                 _logger.LogError(ex, "An error occurred while retrieving products");
                 return StatusCode(500, "An error occurred while retrieving products");
             }
-        }
+        }/// <summary>
+        /// GET /api/products/{id} - Returns a JSON object of the product with the
         [NonAction]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
