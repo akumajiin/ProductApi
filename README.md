@@ -17,58 +17,32 @@ CREATE TABLE Products (
 ## Features
 
 - **GET /api/products** - Returns a JSON array of all products
-- Entity Framework Core with SQL Server
+- Entity Framework Core with in memory database
 - Swagger/OpenAPI documentation
-- Dependency injection
 - Comprehensive error handling and logging
 
 ## Technology Stack
 
 - **Framework**: ASP.NET Core (.NET 9)
 - **ORM**: Entity Framework Core
-- **Database**: SQL Server
 - **Documentation**: Swagger/OpenAPI
-- **Architecture**: Repository Pattern with Dependency Injection
 
 ## Getting Started
 
 ### Prerequisites
-
+  dotnet add package Microsoft.EntityFrameworkCore.InMemory
 - .NET 9.0 SDK
-- SQL Server (LocalDB, SQL Server Express, or full SQL Server)
+- In memory database
 
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd ProductApi
-   ```
-
-2. **Restore packages**
-   ```bash
-   dotnet restore
-   ```
-
-3. **Update the connection string**
-   
-   Edit `appsettings.json` and update the connection string to point to your SQL Server instance:
-   ```json
-   {
-     "ConnectionStrings": {
-       "DefaultConnection": "Server=your-server;Database=ProductApiDb;Trusted_Connection=true;MultipleActiveResultSets=true"
-     }
-   }
-   ```
 
 4. **Run the application**
-   ```bash
-   dotnet run
-   ```
+
+   dotnet run --launch-profile https
+  
 
 ### Database Setup
 
-Make sure your SQL Server database has the Products table with the schema shown above. The API will connect to the existing table.
+used in memory database 
 
 ## API Endpoints
 
@@ -93,8 +67,6 @@ Make sure your SQL Server database has the Products table with the schema shown 
 ]
 ```
 
-## Development
-
 ### Project Structure
 
 ```
@@ -114,10 +86,10 @@ ProductApi/
 
 ### Running the Application
 
-The application will start on `http://localhost:5299` by default.
+The application will start on `http://localhost:5280` by default.
 
-- **API Endpoint**: `http://localhost:5299/api/products`
-- **Swagger UI**: `http://localhost:5299/swagger`
+- **API Endpoint**: `http://localhost:5280/api/products`
+- **Swagger UI**: `http://localhost:5280/swagger`
 
 ### Building for Production
 
@@ -125,33 +97,5 @@ The application will start on `http://localhost:5299` by default.
 dotnet publish -c Release -o ./publish
 ```
 
-## Configuration
 
-The application uses the following configuration in `appsettings.json`:
 
-```json
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=ProductApiDb;Trusted_Connection=true;MultipleActiveResultSets=true"
-  },
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-      "Microsoft.AspNetCore": "Warning",
-      "Microsoft.EntityFrameworkCore.Database.Command": "Information"
-    }
-  }
-}
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## License
-
-This project is licensed under the MIT License.
